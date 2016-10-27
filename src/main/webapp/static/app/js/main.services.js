@@ -4,7 +4,7 @@ var livelance = angular.module('livelance.services', []);
 livelance.service('sessionService', function($http, $resource, Account) {
 
 	this.login = function(account) {
-		return $http.post('/app/login', "username=" + account.username
+		return $http.post('/login', "username=" + account.username
 				+ "&password=" + account.password, {
 			headers : {
 				'Content-Type' : 'application/x-www-form-urlencoded'
@@ -15,7 +15,7 @@ livelance.service('sessionService', function($http, $resource, Account) {
 	this.logout = function() {
 		localStorage.removeItem("session");
 		localStorage.removeItem("roles");
-		return $http.get('/app/logout');
+		return $http.get('/logout');
 	};
 
 	this.isLoggedIn = function() {
@@ -58,7 +58,7 @@ livelance.service('dealsData', function() {
 
 // DEAL SERVICE
 livelance.factory('Deal', function($resource) {
-	return $resource('/app/api/deals/:id', {
+	return $resource('/api/deals/:id', {
 		id : '@id'
 	});
 
@@ -392,7 +392,7 @@ livelance.factory('Deal', function($resource) {
 
 //ACCOUNT
 livelance.factory('Account', function($resource) {
-	return $resource('/app/api/accounts/:id', {
+	return $resource('/api/accounts/:id', {
 		id : '@id'}, {
 			  'update': { method:'PUT' 
 			}
@@ -401,7 +401,7 @@ livelance.factory('Account', function($resource) {
 
 //PROFILE
 livelance.factory('Profile', function($resource) {
-	return $resource('/app/api/profiles/:id', {
+	return $resource('/api/profiles/:id', {
 		id : '@id'}, {
 			  'update': { method:'PUT' 
 		}
@@ -436,12 +436,12 @@ livelance.factory('Profile', function($resource) {
 
 //MANAGEMENT
 livelance.factory('Management', function($resource) {
-	return $resource('/app/management');
+	return $resource('/management');
 });
 
 //RATING
 livelance.factory('Rating', function($resource) {
-	return $resource('/app/api/deals/:deal/ratings/', { deal : '@deal'});
+	return $resource('/api/deals/:deal/ratings/', { deal : '@deal'});
 	
 }).service('ratingService', function(Rating) {
 	this.saveComment = function(deal, customerName, rate, comment) {
@@ -464,7 +464,7 @@ livelance.factory('Rating', function($resource) {
 
 //CATEGORY
 livelance.factory('Category', function($resource) {
-	return $resource('/app/api/categories/');
+	return $resource('/api/categories/');
 });
 
 //FILE UPLOAD

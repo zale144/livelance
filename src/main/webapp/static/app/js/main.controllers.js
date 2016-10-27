@@ -158,7 +158,7 @@ livelance.controller('AccountController',	function($scope, Account, sessionServi
 		var file = $scope.myFile;
 		console.log('file is ' );
 		console.dir(file);
-		var uploadUrl = "/app/api/files/images/";
+		var uploadUrl = "/api/files/images/";
 		var link = uploadUrl + file.name;
 		$scope.profile.pictureLink = link;
 		$scope.profile.account = $scope.account;

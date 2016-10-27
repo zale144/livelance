@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.aleksandars</groupId>
 	<artifactId>livelance-webapp</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>livelance</name>
 	<properties>

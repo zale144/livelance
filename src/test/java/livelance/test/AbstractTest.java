@@ -6,10 +6,10 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import junit.framework.TestCase;
-import livelance.app.HireMeApplication;
+import livelance.app.LiveLanceApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = HireMeApplication.class)
+@SpringApplicationConfiguration(classes = LiveLanceApplication.class)
 public abstract class AbstractTest extends TestCase {
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());

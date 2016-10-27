@@ -16,11 +16,11 @@ import org.springframework.util.FileSystemUtils;
 import livelance.app.web.controller.FileUploadController;
 
 @SpringBootApplication
-public class HireMeApplication extends SpringBootServletInitializer {
+public class LiveLanceApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(HireMeApplication.class, args);
+		SpringApplication.run(LiveLanceApplication.class, args);
 	}
 	
 	@Bean
