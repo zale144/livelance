@@ -1,0 +1,191 @@
+<div class="container">
+      <div class="row">
+        <div class="col-md-3 pull-left">
+          <div class="panel panel-info profile">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{profile.firstname}} {{profile.lastname}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="">
+                <div class="col-md-4 col-lg-3 col-md-offset-1" align="center"> 
+                <img alt="User Pic" style="width:304px;height:128px;" src="{{profile.pictureLink}}" 
+                class="img-square img-responsive"></br> </div>
+               
+                <div ng-show="edit">
+		  			<input type="file" id="file" name="file" file-model="myFile"/>
+		 			 <button ng-click="uploadFile()">Upload</button>
+	  			</div>
+                <div class=" col-md-9 col-lg-9 col-md-offset-1"> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Broj telefona:</td>
+                        <td ng-hide="edit">{{profile.phoneNumber}}</td>
+                        <td ng-show="edit"><input ng-model="profile.phoneNumber" /></td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td ng-hide="edit"><a href="mailto:{{profile.email}}">{{profile.email}}</td>
+                        <td ng-show="edit"><input ng-model="profile.email" /></td>
+                      </tr>
+                      <tr>
+                        <td>Datum registracije:</td>
+                        <td ng-bind=
+							"formatDate(profile.dateOfRegistration) |  date:'dd/MM/yyyy'">
+								{{}}<td>
+                      </tr>
+                         <tr>
+                             <tr>
+                        <td>Korisnicko ime:</td>
+                        <td>{{account.username}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <a href="#" class="btn btn-primary">My Sales Performance</a>
+                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                 
+<!--                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button"  -->
+<!--                         class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
+                        <span class="pull-right">
+                            <a ng-show="self" ng-click="editAccount()" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a ng-show="self" ng-click="newDeal()" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i></a>
+                            <a ng-show="edit" ng-click="saveAccount()" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-check"></i></a>
+<!--                             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"> -->
+<!--                             <i class="glyphicon glyphicon-remove"></i></a> -->
+                        </span></br></br>
+                    </div>
+            
+          </div>
+        </div>
+        
+
+
+<div ng-show="show" class="panel-group col-md-5 pull-right">
+  	<div class="panel panel-default">
+    	<div ng-init="getService(deal)" class="panel-heading">
+    		<h4 class="panel-title">
+    			{{deal.service.name}}
+    			<button ng-click="cancel()" class="btn btn-danger pull-right">
+	          					<i class="glyphicon glyphicon-remove"></i></button></br></br>
+      		</h4>
+    	</div>
+    		 <div class="panel-body">
+    		 	<div class="jumbotron">
+	    		 	<div>
+	      				<div ng-controller="CategoryController" class="form-group">
+		      				<label>Category:</label>
+		      				<select ng-model="category" ng-options="category as category.name for category in categories"></select>
+		      				<label>Service:</label>
+	    	  				<select ng-model="deal.service"	ng-options="service as service.name for service in category.services"></select>
+	      				</div>
+	      				<div class="form-group">
+	          				<label>Description:</label>
+	          				<input type="text" ng-model="deal.description" placeholder="Description"/>
+	      				</div>
+	     				 <div class="form-group">
+	          				<label>Price:</label>
+	         				<input type="text" ng-model="deal.serviceCost" placeholder="Price"/>
+	      				</div>
+	      				<div class="form-group">
+	      				
+	          				<label>Locations:</label>
+	          				
+	          				<div class="well" ng-repeat="location in deal.locations">
+	            				{{location.country}} {{location.city}} {{location.street}} {{location.number}} {{location.latitude}} {{location.longitude}}
+	          					<button ng-click="removeLocation(location)" class="btn btn-danger pull-right">
+	          					<i class="glyphicon glyphicon-remove"></i></button></br>
+	          					
+	          				</div>
+	          				<div id="map_canvas">
+      								<div id="pickmap"></div>
+ 								</div>
+ 								</br>
+				          	<input type="text" ng-model="loc.country" placeholder="Country"/></br>
+				          	<input type="text" ng-model="loc.city" placeholder="City"/></br>
+				          	<input type="text" ng-model="loc.street" placeholder="Street"/></br>
+				          	<input type="text" ng-model="loc.number" placeholder="Number"/></br>
+				          	<button ng-click="addLocation(loc);" class="btn btn-success">Add location</button>
+	      				</div>
+	      				<button class="btn btn-primary" ng-click="addDeal();">Save</button>
+	  				</div>
+    		 	</div>
+			</div>
+	</div>
+</div>
+
+        
+        
+        
+<div class="col-md-5 pull-right deals" ng-controller="RatingController" ng-repeat="deal in profile.deals | orderBy:'-'"
+ class="panel-group ">
+  	<div class="panel panel-default deal">
+    	<div ng-init="getService(deal)" class="panel-heading">
+    		<h4 class="panel-title">
+    			{{deal.service.name}}
+    			<button ng-click="removeDeal(deal)" ng-show="edit" class="btn btn-danger pull-right">
+	          					<i class="glyphicon glyphicon-remove"></i></button></br></br>
+      		</h4>
+    	</div>
+    		 <div class="panel-body">
+    		 	<div class="jumbotron">
+    		 		<div class="desc">
+    		 			<h4>{{deal.description}}</h4>
+    		 		</div>
+    		 	<span class="adr" ng-repeat="loc in deal.locations"> - {{loc.country}}, 
+    		 		{{loc.city}}, {{loc.street}}, {{loc.number}}</br></span>
+    		 	</div>
+	    		 <table class="table">
+	    		 	<tr>
+						<th>Cena</th><td>{{deal.serviceCost}} RSD</td>
+					</tr>
+					<tr>
+						<th>Prosecna ocena:</th><td>
+							<div>
+  								<uib-rating ng-model="deal.averageRating"></uib-rating>
+							</div>
+					</td>
+					</tr>
+				</table>
+    		 <uib-accordion close-others="oneAtATime">	
+    		 	<div uib-accordion-group class="panel-default" is-open="status.isCustomHeaderOpen" template-url="">
+      				<uib-accordion-heading>
+				        Ocene i komentari <i class="pull-right glyphicon" 
+				        ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 
+				        'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+			      	</uib-accordion-heading>
+			     
+				     <div class="well" ng-repeat="rat in deal.ratings"> <strong> {{rat.customerName}} :</strong>  
+	    		 		<i>{{rat.comment}}</i> <b class="pull-right"><uib-rating ng-model="rat.rating"></uib-rating></b>
+	    		 	</div>
+					<div ng-hide="self" class="form-group">
+    		 			<label for="usr">Mušterija:</label>
+ 						<input ng-model="customerName" type="text" placeholder="Anoniman" class="form-control" id="usr">
+ 						<div>
+    						<span>Ocena:   </span>
+	  						<uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"
+	  						 on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></uib-rating>
+	        				<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 
+        					'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+						</div>
+    		 			<label for="comment">Komentar:</label>
+ 						<textarea ng-model="comment" class="form-control" rows="5" id="comment"></textarea>
+ 						<button class="btn btn-default" ng-click="submitComment(deal, customerName, rate, comment); 
+ 						comment='';rate=0;customerName='';update();" type="submit">Pošalji</button>
+    		 		</div>
+
+
+   				</div>
+    		 </uib-accordion>
+    		 	
+    		 	
+			</div>
+	</div>
+</div>
+
+      </div>
+    </div>

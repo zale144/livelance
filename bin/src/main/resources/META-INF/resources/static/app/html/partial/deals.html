@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="row">
+		<div class="map col-md-8">
+		
+		<div id="map_canvas" ng-controller="GeoLocation">
+	      	<div id="map"></div>
+		    <div id="repeat" ng-repeat="marker in markers | orderBy : 'title'">
+		         <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
+		         <label id="names" >{{marker.title}}</label></a>
+		    </div>
+ 		</div>
+		
+		</div>
+		<div class="row col-md-4 pull-right deals">
+			<div ng-controller="IndexController" ng-init="updateDeals();">
+				<div ng-controller="RatingController" ng-repeat="deal in deals | orderBy:'-'" id="repeat"
+				 class="panel-group">
+				  	<div class="panel panel-default deal">
+				    	<div ng-init="getService(deal)" class="panel-heading">
+				    		<h4 class="panel-title">
+<!-- 				    			<a id="country_container" href="#" ng-click="openInfoWindow($event, deal.marker)"> -->
+				    			 {{deal.service.name}}
+				      		</h4>
+				    	</div>
+				    	   <div class="panel-body">
+				    		 	<div class="jumbotron" style="height : 250px">
+				    		 		<div class="desc">
+				    		 		<a href="/#/profiles/{{deal.profile.rid}}" >
+				    		 		<img alt="Profil" src="{{deal.profile.pictureLink}}" style="width:128px;height:128px;"></br>
+				    		 		{{deal.profile.firstname}} {{deal.profile.lastname}}</a></br>
+				    		 			<h4>{{deal.description}}</h4>
+				    		 		</div>
+				    		 	<span class="adr" ng-repeat="loc in deal.locations"> - {{loc.country}}, 
+				    		 		{{loc.city}}, {{loc.street}}, {{loc.number}}</br></span>
+				    		 	</div>
+					    		 <table class="table">
+					    		 	<tr>
+										<th>Cena</th><td>{{deal.serviceCost}} RSD</td>
+									</tr>
+									<tr>
+										<th>Prosecna ocena:</th><td>
+											<div>
+				  								<uib-rating ng-model="deal.averageRating"></uib-rating>
+											</div>
+									</td>
+									</tr>
+								</table>
+				    		 <uib-accordion close-others="oneAtATime">	
+				    		 	<div uib-accordion-group class="panel-default" is-open="status.isCustomHeaderOpen" template-url="">
+				      				<uib-accordion-heading>
+								        Ocene i komentari <i class="pull-right glyphicon" 
+								        ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 
+								        'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+							      	</uib-accordion-heading>
+							     
+								     <div class="well " ng-repeat="rat in deal.ratings"> <strong> {{rat.customerName}} :</strong>  
+					    		 		<i>{{rat.comment}}</i> <b class="pull-right"><uib-rating ng-model="rat.rating"></uib-rating></b>
+					    		 	</div>
+				   				</div>
+				    		 </uib-accordion>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</div>

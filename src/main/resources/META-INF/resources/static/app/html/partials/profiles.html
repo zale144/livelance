@@ -1,0 +1,27 @@
+
+<table ng-init="getAll()" class="table col-md-12 container">
+	<thead>
+		<tr>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Email</th>
+			<th>Phone number</th>
+			<th>Deals</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="profile in profiles">
+			<td>{{profile.firstname}}</td>
+			<td>{{profile.lastname}}</td>
+			<td>{{profile.email}}</td>
+			<td>{{profile.phoneNumber}}</td>
+			<td><span ng-repeat="deal in profile.deals"> 
+			<strong	ng-init="getService(deal)">Usluga:</strong> {{deal.service.name}}</br>
+					 <strong>Opis:</strong>{{deal.description}} </br>
+					  <strong>Cena:</strong>{{deal.serviceCost}}RSD </br>
+					   <strong>Prosecna ocena:</strong> {{deal.averageRating}}
+					<hr>
+			</span></td>
+		</tr>
+	</tbody>
+</table>

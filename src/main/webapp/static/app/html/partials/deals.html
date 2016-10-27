@@ -1,0 +1,74 @@
+<div class="row" ng-init="loadMap()">
+	<div class="map col-md-7">
+			<div id="map_canvas">
+		      	<div id="map"></div>
+	 		</div>
+		
+	</div>
+	<div class="col-md-5">
+				<div ng-controller="RatingController" ng-repeat="deal in deals | orderBy:'shorterDistance'"
+				 class="panel-group">
+				  	<div class="panel panel-default deal">
+				    	<div ng-init="getService(deal)" class="panel-heading">
+				    		<strong class="panel-title">
+				    			 {{deal.service.name}} 
+				      		</strong>
+				      		<p class="pull-right">Distance: {{deal.shorterDistance}} m</p>
+				    	</div>
+				    	   <div class="panel-body">
+				    	   
+					    	   	<div class="row desc">
+					    	   		<div class="pull-left col-md-5">
+						    		 		<a href="./#/profiles/{{deal.profile.rid}}" >{{deal.profile.firstname}} {{deal.profile.lastname}} </br>
+						    		 		<img alt="Profil" src="{{deal.profile.pictureLink}}" class="img-rounded img-responsive"></a>
+					    		 	</div>
+					    		 	<div class="pull-right col-md-7">
+					    		 		<div>
+		    		 						<h4>{{deal.description}}</h4>
+		    		 					</div>
+		    		 					<div>
+		    		 						{{deal.longDescription}}
+		    		 					</div>
+					    		 	</div>
+					    	   	</div>
+				    		 	
+				    		 	<div class="row desc">
+				    		 		<span class="adr" ng-repeat="loc in deal.locations">{{loc.country}}, 
+				    		 		{{loc.city}}, {{loc.street}}, {{loc.number}}</br></span>
+				    		 	</div>
+				    		 	
+				    		 	<div>
+				    		 		<table class="table">
+					    		 	<tr>
+										<th>Price:</th><td>{{deal.serviceCost}} RSD</td>
+									</tr>
+									<tr>
+										<th>Average rating:</th><td>
+											<div>
+				  								<uib-rating ng-model="deal.averageRating"></uib-rating>
+											</div>
+									</td>
+									</tr>
+								</table>
+				    		 	</div>
+				    		 	
+					    		 
+				    		 <uib-accordion close-others="oneAtATime">	
+				    		 	<div uib-accordion-group class="panel-default" is-open="status.isCustomHeaderOpen" template-url="">
+				      				<uib-accordion-heading>
+								        Ratings: <i class="pull-right glyphicon" 
+								        ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 
+								                'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+							      	</uib-accordion-heading>
+								     <div class="well" id="comment" ng-repeat="rat in deal.ratings"> 
+										<span ng-bind="formatDate(rat.timeOfRating) |  date:'dd/MM/yyyy'">{{}}</span></br>									     	
+								     	<strong> {{rat.customerName}} :</strong>  
+					    		 		<uib-rating ng-model="rat.rating"></uib-rating></br><i> {{rat.comment}}</i> 
+					    		 	</div>
+				   				</div>
+				    		 </uib-accordion>
+						  </div>
+					</div>
+				</div>
+	</div>
+</div>
