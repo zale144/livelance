@@ -5,14 +5,6 @@ livelance.controller('DealController', function($scope, dealService, dealsData,
 		$location, $window) {
 	$scope.deals = dealsData.ret;
 	
-	var forceSSL = function () {
-	    if ($location.protocol() !== 'https') {
-	        $window.location.href = $location.absUrl().replace('http', 'https');
-	    }
-	};
-	
-	forceSSL();
-	
 	var updateDeals = function() {
 		dealService.getDeals({}, function(data) {
 			dealsData.addDeals(data);
@@ -36,6 +28,14 @@ livelance.controller('DealController', function($scope, dealService, dealsData,
 // INDEX
 livelance.controller('IndexController', function($scope, $location, sessionService,
 		dealService, dealsData) {
+	
+	var forceSSL = function () {
+	    if ($location.protocol() !== 'https') {
+	        $window.location.href = $location.absUrl().replace('http', 'https');
+	    }
+	};
+	
+//	forceSSL();
 	
 	$scope.loadMap = function() {
 		dealService.loadMap();

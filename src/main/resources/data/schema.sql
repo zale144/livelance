@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS livelance;
-CREATE DATABASE livelance DEFAULT CHARACTER SET utf8;
-USE livelance;
-GRANT ALL ON livelance.* TO 'zale144'@'%' IDENTIFIED BY 'pastazazube';
-FLUSH PRIVILEGES;
+--DROP DATABASE IF EXISTS _db_livelance;
+--CREATE DATABASE _db_livelance DEFAULT CHARACTER SET utf8;
+--USE _db_livelance;
+--GRANT ALL ON _db_livelance.* TO 'li_db_user'@'%' IDENTIFIED BY '5BXnPwzao8kjVfCt';
+--FLUSH PRIVILEGES;
 
 DROP TABLE IF EXISTS rating;
 DROP TABLE IF EXISTS location;

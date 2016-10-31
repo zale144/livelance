@@ -16,7 +16,7 @@
 		<main.basedir>${basedir}/../..</main.basedir>
 		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
 		<java.version>1.8</java.version>
-		<tomcat.version>7.0.59</tomcat.version>
+<!-- 		<tomcat.version>7.0.66</tomcat.version> -->
 	</properties>
 	<dependencies>
 		<dependency>
