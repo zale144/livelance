@@ -1,0 +1,36 @@
+<div class="text-center">
+  <h1 class="page-header">
+      Login
+  </h1>
+  <form ng-submit="register()">
+      <div class="form-group">
+          <label>Username:</label>
+          <input type="text" ng-model="account.username" required/>
+      </div>
+      <div class="form-group">
+          <label>Password:</label>
+          <input type="password" ng-model="account.password" required/>
+      </div>
+      <div class="form-group">
+          <label>Repeat password:</label>
+          <input type="password" ng-model="account.passwordConfirm" required/>
+      </div>
+       <div class="form-group">
+          <label>Firstname:</label>
+          <input type="text" ng-model="account.profile.firstname" required/>
+      </div>
+       <div class="form-group">
+          <label>Lastname:</label>
+          <input type="text" ng-model="account.profile.lastname" required/>
+      </div>
+       <div class="form-group">
+          <label>Phone number:</label>
+          <input type="text" ng-model="account.profile.phoneNumber"/>
+      </div>
+       <div class="form-group">
+          <label>email:</label>
+          <input type="email" ng-model="account.profile.email" required/>
+      </div>
+      <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+</div>
