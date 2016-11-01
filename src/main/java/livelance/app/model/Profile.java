@@ -60,10 +60,6 @@ public class Profile {
 		this.id = id;
 	}
 	
-	public void setDateOfRegistration(Date dateOfRegistration) {
-		this.dateOfRegistration = dateOfRegistration;
-	}
-
 	public void addDeal(Deal newDeal) {
 		if (newDeal != null && !deals.contains(newDeal)) {
 			deals.add(newDeal);
@@ -118,6 +114,10 @@ public class Profile {
 
 	public Date getDateOfRegistration() {
 		return dateOfRegistration;
+	}
+
+	public void setDateOfRegistration(Date dateOfRegistration) {
+		this.dateOfRegistration = dateOfRegistration;
 	}
 
 	public Account getAccount() {
