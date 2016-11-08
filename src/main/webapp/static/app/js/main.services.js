@@ -161,6 +161,7 @@ livelance.factory('Deal', function($resource) {
 	}
 
 	var zoom;
+	var minZoom;
 	var map;
 	//GEOLOCATION
 	var geoFindMe = function(callback) {
@@ -312,7 +313,6 @@ livelance.factory('Deal', function($resource) {
      
      function CenterControl(controlDiv, map) {
 
-         // Set CSS for the control border.
          var controlUI = document.createElement('div');
          controlUI.style.backgroundColor = '#fff';
          controlUI.style.border = '2px solid #fff';
@@ -324,7 +324,6 @@ livelance.factory('Deal', function($resource) {
          controlUI.title = 'Click to reset your location';
          controlDiv.appendChild(controlUI);
 
-         // Set CSS for the control interior.
          var controlText = document.createElement('div');
          controlText.style.color = 'rgb(25,25,25)';
          controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
@@ -335,7 +334,6 @@ livelance.factory('Deal', function($resource) {
          controlText.innerHTML = 'Reset my location';
          controlUI.appendChild(controlText);
 
-         // Setup the click event listeners: simply set the map to Chicago.
          controlUI.addEventListener('click', function() {
         	localStorage.removeItem('position');
      		update(q, clbck);
@@ -349,7 +347,7 @@ livelance.factory('Deal', function($resource) {
 			var pos = localStorage.getItem("position").split(',',2);
 			var latitude = pos[0];
 			var longitude = pos[1];
-	
+			
 			infoWindow = new google.maps.InfoWindow();
 		 	var mapOptions = {
 				            zoom: 13,
@@ -363,10 +361,8 @@ livelance.factory('Deal', function($resource) {
 				            scrollwheel: false,
 				        }
 
-		 	map = new google.maps.Map(document.getElementById('map'), mapOptions);
-		 	
-		 	 // Create the DIV to hold the control and call the CenterControl()
-	         // constructor passing in this DIV.
+		 	 map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		 	 minZoom = map.getZoom();
 	         var centerControlDiv = document.createElement('div');
 	         var centerControl = new CenterControl(centerControlDiv, map);
 
@@ -375,9 +371,12 @@ livelance.factory('Deal', function($resource) {
 	         map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 		 	
 				    map.addListener('zoom_changed', function() {
-				 		console.log( map.getZoom());
+				 		console.log(map.getZoom());
 				 		zoom =  map.getZoom();
-				 		update(q, clbck);
+				 		if(zoom < minZoom) {
+				 			minZoom = zoom;
+				 			update(q, clbck);
+				 		}
 				 	});
 			}
 	}
