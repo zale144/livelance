@@ -4,6 +4,18 @@ The purpose of this demo application is to present a basic working model of a pl
 
 Class diagram:
 
-![alt tag](https://raw.githubusercontent.com/zale144/livelance/master/livelance-diagram.png)
+![alt tag](https://raw.githubusercontent.com/zale144/livelance/master/UML_diagrams/class.png)
+
+Use case diagram:
+
+![alt tag](https://raw.githubusercontent.com/zale144/livelance/master/UML_diagrams/useCase.png)
+
+Geolocation activity diagram:
+
+![alt tag](https://raw.githubusercontent.com/zale144/livelance/master/UML_diagrams/geolocation.png)
+
+Registration sequence diagram:
+
+![alt tag](https://raw.githubusercontent.com/zale144/livelance/master/UML_diagrams/register.png)
 
 Author: Aleksandar Sukovic
