@@ -71,6 +71,7 @@ a {
 
 .popupBack {
 	min-height: 500px;
+	max-width: 85%;
 }
 
 .deal a {
