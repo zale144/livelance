@@ -70,7 +70,8 @@ livelance.controller('IndexController', function($scope, $location, sessionServi
 		sessionService.logout().success(function() {
 			$location.path('/home');
 		}).error(function() {
-			alert('error logging out');
+			$location.path('/home');
+//			alert('error logging out');
 		})
 	};
 
