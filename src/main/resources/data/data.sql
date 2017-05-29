@@ -7,13 +7,13 @@ INSERT INTO role (id, code, label)
 VALUES (3, 'ROLE_SYSADMIN', 'System Admin');
 
 INSERT INTO account (username, password, enabled, credentialsexpired, expired, locked) 
-VALUES ('jane', '$2a$04$oCNqkdWPn77cQ7c4S6ylfe3WGYdf6QXH7AV.wkaDDUjqAFtjt.XyC', true, false, false, false);
+VALUES ('jane', '$2a$04$wAfjP9FidceDBvtM.w4N4uMt25h6l4A/GOmLoeKm8ifZTnxKRn/26', true, false, false, false);
 INSERT INTO account (username, password, enabled, credentialsexpired, expired, locked) 
-VALUES ('pete', '$2a$04$iaCt6D1GR2QhQw8wZYyi3Orrzw7m0JwGTLJiz7hGomCtU8R5faeEe', true, false, false, false);
+VALUES ('pete', '$2a$04$wAfjP9FidceDBvtM.w4N4uMt25h6l4A/GOmLoeKm8ifZTnxKRn/26', true, false, false, false);
 INSERT INTO account (username, password, enabled, credentialsexpired, expired, locked) 
-VALUES ('shogo', '$2a$04$3NNhArZIGWt5J0WREJAy7eTmUxRC3qVr9qxddJFuvXdegzEeohMQ.', true, false, false, false);
+VALUES ('shogo', '$2a$04$wAfjP9FidceDBvtM.w4N4uMt25h6l4A/GOmLoeKm8ifZTnxKRn/26', true, false, false, false);
 INSERT INTO account (username, password, enabled, credentialsexpired, expired, locked) 
-VALUES ('kris', '$2a$04$3NNhArZIGWt5J0WREJAy7eTmUxRC3qVr9qxddJFuvXdegzEeohMQ.', true, false, false, false);
+VALUES ('kris', '$2a$04$wAfjP9FidceDBvtM.w4N4uMt25h6l4A/GOmLoeKm8ifZTnxKRn/26', true, false, false, false);
 
 INSERT INTO profile (account_id, firstname, lastname, email, phone_number, picture_link, website, facebook,
 about, date_of_registration) 
