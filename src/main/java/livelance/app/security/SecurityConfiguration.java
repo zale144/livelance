@@ -58,9 +58,9 @@ public class SecurityConfiguration {
     	                 .and()
                  .logout().logoutSuccessUrl("/").permitAll();
 			 
-			 http.portMapper()
-             	.http(Integer.parseInt(environment.getProperty("server.http.port"))) 
-             	.mapsTo(Integer.parseInt(environment.getProperty("server.port"))); 
+//			 http.portMapper()
+//             	.http(Integer.parseInt(environment.getProperty("server.http.port"))) 
+//             	.mapsTo(Integer.parseInt(environment.getProperty("server.port"))); 
 
 			// @formatter: on
 		}
