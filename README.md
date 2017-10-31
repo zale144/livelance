@@ -2,7 +2,7 @@
 
 The purpose of this demo application is to present a basic working model of a platform which provides a channel between the people who are in need of a service and the people who	provide services and wish to advertise their business. 
 
-Technologies used: J2EE, Spring Boot, Spring Security, Hibernate, JavaScript, AngularJS, AJAX, HTML5, CSS3, Bootstrap, Google Maps API, MySQL, REST, HATEOAS, JUnit, TDD, Mockito.
+Technologies used: J2EE, Spring Boot, Spring Security, Hibernate, Maven, JavaScript, AngularJS, AJAX, HTML5, CSS3, Bootstrap, Google Maps API, MySQL, REST, HATEOAS, JUnit, TDD, Mockito.
 
 Class diagram:
 
